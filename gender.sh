@@ -1,3 +1,15 @@
+# Takes wages.csv and...
+#1) removes first row,
+#2) only keeps gender and years experience columns, 
+#3) sorts unique gender/years experience combinations,
+#4) and writes it to a filename of your choice
+
+#Usage: bash gender.sh <filenameforoutput>
+
+cat wages.csv | sed '1d'| cut -d, -f-1,2 | sort -ut"," -k1,1 -k2n,2  > "$1"
+
+
+
 #Returns gender, yearsExperience, and wage for
 #1 highest earner
 #2 lowest earner
